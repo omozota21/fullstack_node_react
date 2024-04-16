@@ -1,11 +1,11 @@
-//importamos la conexión a la DB
-import db from "../database/db.js";
-//importamos sequelize
-import { DataTypes } from "sequelize";
+import mongoose from "mongoose";
+const Schema = mongoose.Schema
 
- const BlogModel = db.define('blogs', {
-     title: { type: DataTypes.STRING },
-     content: { type: DataTypes.STRING },
- })
-
- export default BlogModel
+const blogSchema = new Schema(
+    {
+        title: {type:String},
+        content: {type:String}
+    },
+    {collection: "blogs"}
+)
+ export default mongoose.model("BlogModel", blogSchema)
